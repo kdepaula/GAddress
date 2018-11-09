@@ -9,32 +9,35 @@ public class GettysburgAddress
 	public static void main(String[] args) throws FileNotFoundException 
 	{
 		ArrayList<String> gettys = new ArrayList<String>();
-		int currentSize = 0;
 		int charCount = 0;
 		int wordCount = 0;
-		String longestWord;
+		String longWord;
 		Scanner file = new Scanner(new File("Gettsburg Address.txt"));
 		while(file.hasNext())
 		{
 			String word = file.next();
-		if(!word.equals("!") && !word.equals(".") && !word.equals(",") && !word.equals("-"))
-			{
-				wordCount++;
-				gettys.add(word);
-				currentSize++;
+			wordCount++;
+			gettys.add(word);
 			}
 		
-		for(int i = 0; i<currentSize; i++)
+		for(int i = 0; i< gettys.size() + 1; i++)
 		{
-			longestWord = gettys.get(i);
-			String secWord = gettys.get(i + 1);
+			longWord = gettys.get(i);
+			if(gettys.get(i) > gettys.get(i + 1))
+				{
+				longWord = gettys.get(i - 1);
+				}
+			String secWord = gettys.get(i);
 			if(secWord.length() > longestWord.length())
 			{
 				secWord = longestWord;
 			}
 		}
-		}
 		
-	System.out.println(longestWord);
+	for(String a: gettys)
+	{
+	System.out.print(a);
+	}
 }
 }
+
